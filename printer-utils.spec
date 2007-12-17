@@ -24,7 +24,6 @@ Source85:	http://www.linuxprinting.org/download/printing/hp1000fw
 Source87:	http://www.linuxprinting.org/download/printing/usb_id_test.c
 Source88:	http://www.linuxprinting.org/download/printing/getusbprinterid.pl
 
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 Tools for printer maintenance: Setting default options for most laser
