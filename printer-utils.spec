@@ -4,6 +4,7 @@ Version:	2008
 Release:	%mkrel 1
 License:	GPL
 Group:		Publishing
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	ghostscript-utils Lexmark-printer-maintenance
 Provides:	ghostscript-utils Lexmark-printer-maintenance
 Conflicts:	ghostscript < 8.15
