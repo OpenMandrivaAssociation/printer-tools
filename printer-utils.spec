@@ -1,7 +1,7 @@
 Summary:	Filter-style and IJS printer drivers, printer maintenance utilities
 Name:		printer-tools
 Version:	2008
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Publishing
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
