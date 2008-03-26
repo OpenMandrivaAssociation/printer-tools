@@ -1,13 +1,13 @@
 Summary:	Filter-style and IJS printer drivers, printer maintenance utilities
 Name:		printer-tools
 Version:	2008
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPL
 Group:		Publishing
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Obsoletes:	ghostscript-utils Lexmark-printer-maintenance
 Provides:	ghostscript-utils Lexmark-printer-maintenance
 Conflicts:	ghostscript < 8.15
+Conflicts:	printer-filters < 2007
 URL:		http://www.linuxprinting.org/
 
 # Perl script to clean up Manufacturer entries in the PPD files, so that
@@ -24,7 +24,7 @@ Source85:	http://www.linuxprinting.org/download/printing/hp1000fw
 # Tools for reading USB device ID strings
 Source87:	http://www.linuxprinting.org/download/printing/usb_id_test.c
 Source88:	http://www.linuxprinting.org/download/printing/getusbprinterid.pl
-
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Tools for printer maintenance: Setting default options for most laser
