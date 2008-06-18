@@ -1,7 +1,7 @@
 Summary:	Filter-style and IJS printer drivers, printer maintenance utilities
 Name:		printer-tools
 Version:	2008
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPL
 Group:		Publishing
 Obsoletes:	ghostscript-utils Lexmark-printer-maintenance
