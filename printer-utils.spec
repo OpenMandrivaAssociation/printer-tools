@@ -1,7 +1,7 @@
 Summary:	Filter-style and IJS printer drivers, printer maintenance utilities
 Name:		printer-tools
 Version:	2008
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPL
 Group:		Publishing
 Obsoletes:	ghostscript-utils Lexmark-printer-maintenance
@@ -47,7 +47,7 @@ cp %{SOURCE88} getusbprinterid
 %build
 
 # Tool for reading USB device ID strings
-gcc %{optflags} -o usb_id_test usb_id_test.c
+gcc %{optflags} %{ldflags} -o usb_id_test usb_id_test.c
 
 %install
 rm -rf %{buildroot}
