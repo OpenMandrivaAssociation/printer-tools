@@ -1,7 +1,0 @@
-sources:
-  "alignmargins:"	5e21597b4f7bbc3778345970ba3e7c3dcd6552de
-  "align.ps:"	fbfafba48aaa3ef7d84f72b64e6336af5301ab69
-  "cleanppd.pl:"	9f95de10f3f4d5be1cd2fc5bb1dcd0b410000422
-  "getusbprinterid.pl:"	74f214847d419f675aac7ef80b0aa5580e743188
-  "hp1000fw:"	eb2a321ea271b87f3937dfef25c25540748321b5
-  "usb_id_test.c:"	50ae5c31f3951632550111bd0a7785f717c7d143

@@ -149,3 +149,46 @@ rm -rf %{buildroot}
 %attr(0755,root,root) %{_bindir}/usb_id_test
 %attr(0755,root,root) %{_bindir}/getusbprinterid
 %{_datadir}/alignmargins
+
+
+%changelog
+* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 2008-9mdv2011.0
++ Revision: 667841
+- mass rebuild
+
+* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 2008-8mdv2011.0
++ Revision: 607209
+- rebuild
+
+* Sun Mar 14 2010 Oden Eriksson <oeriksson@mandriva.com> 2008-7mdv2010.1
++ Revision: 519059
+- rebuild
+
+* Thu Sep 03 2009 Christophe Fergeau <cfergeau@mandriva.com> 2008-6mdv2010.0
++ Revision: 426780
+- rebuild
+
+* Thu Dec 25 2008 Oden Eriksson <oeriksson@mandriva.com> 2008-5mdv2009.1
++ Revision: 319084
+- use %%ldflags
+
+* Wed Jun 18 2008 Thierry Vignaud <tv@mandriva.org> 2008-4mdv2009.0
++ Revision: 225075
+- rebuild
+
+* Wed Mar 26 2008 Oden Eriksson <oeriksson@mandriva.com> 2008-3mdv2008.1
++ Revision: 190346
+- fix #38890 (File conflicts prevent urpmi upgrade from 2007.1)
+
+* Wed Mar 05 2008 Oden Eriksson <oeriksson@mandriva.com> 2008-2mdv2008.1
++ Revision: 179286
+- rebuild
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - fix no-buildroot-tag
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Wed Sep 05 2007 Marcelo Ricardo Leitner <mrl@mandriva.com> 2008-1mdv2008.0
++ Revision: 80259
+- Import printer-tools
+

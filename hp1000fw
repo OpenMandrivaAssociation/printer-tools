@@ -1,0 +1,69 @@
+#! /bin/sh
+#####################################################################
+#                                                                   #
+#   hp1000fw - HP LaserJet 1000 Firmware Uploader                   #
+#                                                                   #
+#   This program will upload the firmware of the HP LaserJet 1000   #
+#   checking if the printer is connected and if the firmware        #
+#   has been already uploaded.                                      #
+#   (c) 2002 Oscar Santacreu. Alicante-Spain                        #
+#   Copyright under GPL                                             #
+#                                                                   #
+#   This program uses the usb_id_test.c program by Till Kamppeter   #
+#   (Thanks, Till). You can found it at                             #
+#   http://www.linuxprinting.org/download/printing/usb_id_test.c    #
+#   and you can compile it simply with:                             #
+#   "gcc -o usb_id_test usb_id_test.c"                              #
+#                                                                   #
+#####################################################################
+# Last modification date: Jan 10 2002 #
+#######################################
+#
+# ======= User Settings ===============
+# 1. Where is the firmware file?
+firmware=/etc/printer/sihp1000.img
+# 2. Where is the usb_id_test executable?
+detector=/usr/bin/usb_id_test
+# ======= End of user Settings ========
+#
+# logging for diagnostics
+#
+if [ -t -o ! -x /usr/bin/logger ]; then
+    mesg () {
+	echo "$@"
+    }
+else
+    mesg () {
+	/usr/bin/logger -t $0 "$@"
+    }
+fi
+# End logging for diagnostics
+# Check if the configuration is ok
+if [ -e $detector ]; then
+ if [ -e $firmware ]; then
+  candidate_list=`find /dev/usb -name lp*`" "`find /dev -name usblp*` 
+  for candidate in $candidate_list; do
+   printer_status=`$detector $candidate | grep 'hp LaserJet 1000'`
+   if [ "$printer_status" != "" ]; then
+    # I have found a hp LaserJet 1000 :-)
+    mesg hp LaserJet 1000 detected at $candidate
+    firmware_status=`$detector $candidate | grep 'FWVER'`
+    if [ "$firmware_status" = "" ]; then
+     # The firmware is not loaded. Now we can upload the firmware.
+     result=`cat $firmware > $candidate`
+     mesg Firmware uploaded to $candidate.
+     mesg Now you can print normally with this printer.
+    else
+     mesg The firmware was already uploaded.
+    fi
+   fi
+  done
+ else
+  mesg Error: I cannot find the firmware file
+  mesg Please check the settings of $0
+ fi
+else
+ mesg Error: I cannot find the usb_find_test program.
+ mesg Please check the settings of $0
+fi
+############### End of program
