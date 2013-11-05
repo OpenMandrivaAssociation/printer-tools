@@ -2,13 +2,9 @@ Summary:	Filter-style and IJS printer drivers, printer maintenance utilities
 Name:		printer-tools
 Version:	2008
 Release:	13
-License:	GPL
+License:	GPLv2
 Group:		Publishing
-Obsoletes:	ghostscript-utils Lexmark-printer-maintenance
-Provides:	ghostscript-utils Lexmark-printer-maintenance
-Conflicts:	ghostscript < 8.15
-Conflicts:	printer-filters < 2007
-URL:		http://www.linuxprinting.org/
+Url:		http://www.linuxprinting.org/
 
 # Perl script to clean up Manufacturer entries in the PPD files, so that
 # drivers are sorted by the printer Manufacturer in the graphical frontends
@@ -24,7 +20,6 @@ Source85:	http://www.linuxprinting.org/download/printing/hp1000fw
 # Tools for reading USB device ID strings
 Source87:	http://www.linuxprinting.org/download/printing/usb_id_test.c
 Source88:	http://www.linuxprinting.org/download/printing/getusbprinterid.pl
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Tools for printer maintenance: Setting default options for most laser
@@ -34,7 +29,6 @@ sheets of standard sized paper (A4, A3, Letter, ...) to be assambled
 together (also used by KDE Print to print posters).
 
 %prep
-
 %setup -q -c -T
 
 # Tool for uploading the firmware on the HP LaserJet 1000S
@@ -45,13 +39,10 @@ cp %{SOURCE87} usb_id_test.c
 cp %{SOURCE88} getusbprinterid
 
 %build
-
 # Tool for reading USB device ID strings
 gcc %{optflags} %{ldflags} -o usb_id_test usb_id_test.c
 
 %install
-rm -rf %{buildroot}
-
 # Make directories
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_sbindir}
@@ -69,7 +60,6 @@ install -d %{buildroot}%{_sysconfdir}/cups
 install -d %{buildroot}%{_datadir}/foomatic/db/source/printer
 install -d %{buildroot}%{_datadir}/foomatic/db/source/driver
 install -d %{buildroot}%{_datadir}/foomatic/db/source/opt
-
 
 # Install margin and offset adjustment script in /usr/sbin
 cp %{SOURCE75} %{buildroot}%{_sbindir}/alignmargins
@@ -137,58 +127,11 @@ install -m0755 getusbprinterid %{buildroot}%{_bindir}
 # CUPS 1.1.20
 #for ppd in `find %{buildroot}%{_datadir}/cups/model -name "*.ppd.gz" -print`; do cupstestppd -q $ppd || (rm -f $ppd && echo "$ppd not Adobe-compliant. Deleted."); done
 
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %attr(0755,root,root) %{_sbindir}/alignmargins
 %attr(0755,root,root) %{_bindir}/hp1000fw
 %attr(0755,root,root) %{_bindir}/displaytestpage
 %attr(0755,root,root) %{_bindir}/usb_id_test
 %attr(0755,root,root) %{_bindir}/getusbprinterid
 %{_datadir}/alignmargins
-
-
-%changelog
-* Thu May 05 2011 Oden Eriksson <oeriksson@mandriva.com> 2008-9mdv2011.0
-+ Revision: 667841
-- mass rebuild
-
-* Fri Dec 03 2010 Oden Eriksson <oeriksson@mandriva.com> 2008-8mdv2011.0
-+ Revision: 607209
-- rebuild
-
-* Sun Mar 14 2010 Oden Eriksson <oeriksson@mandriva.com> 2008-7mdv2010.1
-+ Revision: 519059
-- rebuild
-
-* Thu Sep 03 2009 Christophe Fergeau <cfergeau@mandriva.com> 2008-6mdv2010.0
-+ Revision: 426780
-- rebuild
-
-* Thu Dec 25 2008 Oden Eriksson <oeriksson@mandriva.com> 2008-5mdv2009.1
-+ Revision: 319084
-- use %%ldflags
-
-* Wed Jun 18 2008 Thierry Vignaud <tv@mandriva.org> 2008-4mdv2009.0
-+ Revision: 225075
-- rebuild
-
-* Wed Mar 26 2008 Oden Eriksson <oeriksson@mandriva.com> 2008-3mdv2008.1
-+ Revision: 190346
-- fix #38890 (File conflicts prevent urpmi upgrade from 2007.1)
-
-* Wed Mar 05 2008 Oden Eriksson <oeriksson@mandriva.com> 2008-2mdv2008.1
-+ Revision: 179286
-- rebuild
-
-  + Thierry Vignaud <tv@mandriva.org>
-    - fix no-buildroot-tag
-    - kill re-definition of %%buildroot on Pixel's request
-
-* Wed Sep 05 2007 Marcelo Ricardo Leitner <mrl@mandriva.com> 2008-1mdv2008.0
-+ Revision: 80259
-- Import printer-tools
 
