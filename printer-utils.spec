@@ -1,7 +1,7 @@
 Summary:	Filter-style and IJS printer drivers, printer maintenance utilities
 Name:		printer-tools
 Version:	2008
-Release:	17
+Release:	18
 License:	GPLv2
 Group:		Publishing
 Url:		http://www.linuxprinting.org/
