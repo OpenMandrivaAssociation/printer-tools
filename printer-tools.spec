@@ -4,7 +4,7 @@ Version:	2008
 Release:	22
 License:	GPLv2
 Group:		Publishing
-Url:		http://www.linuxprinting.org/
+Url:		https://www.linuxprinting.org/
 
 # Perl script to clean up Manufacturer entries in the PPD files, so that
 # drivers are sorted by the printer Manufacturer in the graphical frontends
